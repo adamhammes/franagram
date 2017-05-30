@@ -2,7 +2,7 @@ module Lib
   ( combinations
   ) where
 
-combinations :: Integral a => a -> [b] -> [[b]]
+combinations :: Int -> [b] -> [[b]]
 combinations n l
   | n <= 0 = [[]]
   | n < len = withFirst ++ without
