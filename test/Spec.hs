@@ -20,3 +20,11 @@ main =
       it "choose length of list" $ do
         combinations 4 [1, 2, 3, 4] `shouldBe` [[1, 2, 3, 4]]
       it "big choice" $ do length (combinations 4 [1 .. 10]) `shouldBe` 210
+    describe "canonical form" $ do
+      it "regarde" $ do canonicalForm "regardé" `shouldBe` "adeegrr"
+      it "fete" $ do canonicalForm "fête" `shouldBe` "eeft"
+    describe "buildMapping" $ do
+      let mapping = buildMapping ["regardé", "regarde", "fête"]
+      it "map to multiple" $ do mapping "adeegrr" `shouldBe` ["regarde", "regardé"]
+      it "map to single" $ do mapping "eeft" `shouldBe` ["fête"]
+      it "map to nothing" $ do mapping "asdfasdf" `shouldBe` ([] :: [String])
